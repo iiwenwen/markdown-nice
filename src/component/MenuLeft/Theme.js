@@ -7,6 +7,8 @@ import {replaceStyle} from "../../utils/helper";
 import TEMPLATE from "../../template/index";
 import "./Theme.css";
 import axios from "axios";
+import localThemeData from "../../json/localThemeList.json";
+// import localThemeData from "../../../public/localThemeList";
 
 @inject("content")
 @inject("navbar")
@@ -57,11 +59,13 @@ class Theme extends React.Component {
         remoteThemelist = response.data.data;
       } else {
         // 否则默认主题
-        response = await axios.get(THEME_API());
-        if (!response.data.success) {
-          throw new Error();
-        }
-        remoteThemelist = response.data.data.themeList;
+        // response = await axios.get("https://gist.githubusercontent.com/iiwenwen/d9bb1a61b65bae2d9e65d33efd6a3932/raw/localThemeList.json")
+        //        if (!response.status == 200) {
+        //          throw new Error()
+        //        }
+        //        remoteThemelist = JSON.parse(response.request.responseText)
+        // console.log(localThemeData)
+        remoteThemelist = localThemeData;
       }
 
       themeList = [
